@@ -22,6 +22,19 @@ public class HomePanel extends JPanel {
 
         add(menuPanel, BorderLayout.CENTER);
 
+        // Status Panel
+        JPanel statusPanel = new JPanel();
+        JLabel statusLabel = new JLabel();
+        if (DatabaseHelper.isOffline()) {
+            statusLabel.setText("Running in Offline Mode (No Database)");
+            statusLabel.setForeground(Color.RED);
+        } else {
+            statusLabel.setText("Database Connected Successfully");
+            statusLabel.setForeground(new Color(0, 150, 0));
+        }
+        statusPanel.add(statusLabel);
+        add(statusPanel, BorderLayout.SOUTH);
+
         browseBtn.addActionListener(e -> app.showPage("GAME_LIST"));
         ordersBtn.addActionListener(e -> app.showPage("ORDERS"));
         logoutBtn.addActionListener(e -> app.showPage("LOGIN"));

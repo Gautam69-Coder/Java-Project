@@ -30,6 +30,19 @@ public class LoginPanel extends JPanel {
         gbc.gridy = 4;
         add(signupBtn, gbc);
 
+        // Database Status Label
+        JLabel statusLabel = new JLabel();
+        if (DatabaseHelper.isOffline()) {
+            statusLabel.setText("● Offline Mode (XAMPP/WAMP not connected)");
+            statusLabel.setForeground(Color.RED);
+        } else {
+            statusLabel.setText("● Database Connected");
+            statusLabel.setForeground(new Color(0, 150, 0));
+        }
+        statusLabel.setHorizontalAlignment(JLabel.CENTER);
+        gbc.gridy = 5;
+        add(statusLabel, gbc);
+
         loginBtn.addActionListener(e -> {
             String username = userField.getText().trim();
             String password = new String(passField.getPassword()).trim();
